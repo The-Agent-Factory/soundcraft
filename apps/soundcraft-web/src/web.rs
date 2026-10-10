@@ -1,3 +1,4 @@
+// Modified by The Agent Factory for Claude Academy: rebranding and web language detection (see BRANDING.md).
 //! The browser shell: the eframe web runner around [`SoundApp`].
 
 use soundcraft_engine::Engine;
@@ -43,7 +44,7 @@ pub fn start() {
         if let Some(el) = document.get_element_by_id(LOADING_ID) {
             match result {
                 Ok(()) => el.remove(),
-                Err(e) => el.set_inner_html(&format!("<p>SoundCraft failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
+                Err(e) => el.set_inner_html(&format!("<p>Atelier Sound failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
             }
         }
     });

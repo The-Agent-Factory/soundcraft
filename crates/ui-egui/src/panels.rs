@@ -1,3 +1,4 @@
+// Modified by The Agent Factory for Claude Academy: rebranding and web language detection (see BRANDING.md).
 //! Side panels (Tracks, Groups, Clips) and floating windows.
 
 use crate::SoundApp;
@@ -500,7 +501,7 @@ fn about(app: &mut SoundApp, ctx: &egui::Context) {
         return;
     }
     let tab_id = egui::Id::new("about_tab");
-    egui::Window::new("About SoundCraft").open(&mut open).default_size(vec2(640.0, 420.0)).collapsible(false).show(ctx, |ui| {
+    egui::Window::new("About Atelier Sound").open(&mut open).default_size(vec2(640.0, 420.0)).collapsible(false).show(ctx, |ui| {
         let mut tab = ui.data_mut(|d| d.get_temp::<u8>(tab_id)).unwrap_or(0);
         ui.horizontal(|ui| {
             for (i, l) in (0u8..).zip(["About", "Contributors", "Models"]) {
@@ -515,12 +516,13 @@ fn about(app: &mut SoundApp, ctx: &egui::Context) {
             1 => crate::credits::contributors_ui(ui),
             2 => crate::credits::models_ui(ui),
             _ => {
-                ui.label(egui::RichText::new("SoundCraft").font(bold(22.0)));
+                ui.label(egui::RichText::new("Atelier Sound").font(bold(22.0)));
                 ui.label(format!("Version {}", env!("CARGO_PKG_VERSION")));
-                ui.label("An open-source digital audio workstation from the ArtCraft team.");
+                ui.label("An open-source digital audio workstation. Free preview from Claude Academy.");
+                ui.label(egui::RichText::new("Based on SoundCraft by the ArtCraft team (github.com/storytold/soundcraft). Not affiliated with the ArtCraft team or Avid.").small());
                 ui.label("Dual-licensed MIT OR Apache-2.0. Made with Rust and egui.");
-                ui.hyperlink_to("getartcraft.com/apps/soundcraft", "https://getartcraft.com/apps/soundcraft");
-                ui.hyperlink_to("Join us on Discord", "https://discord.gg/artcraft");
+                ui.hyperlink_to("Claude Academy website", "https://claudeacademy.ca");
+                ui.hyperlink_to("Claude Academy community", "https://www.skool.com/claudeacademy");
             }
         }
     });
